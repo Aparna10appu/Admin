@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <title>BlockedUsers</title>
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="css/commontheme.css">
+</head>
+
+<body>
+  <!--nav starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 topnav-border">
+        <div class="float-start">
+          <a class="cab-logo" href="cabadmin.html"><img src="images/cab-logo.svg" class="cabapp-logo" alt="logo"></a>
+        </div>
+        <div class="float-start">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs " href="cabadmin.html">Manage Requests And Cabs</a>
+            </li>
+<!--             <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="history.html">History of Trips</a></li> -->
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="complaints.html">Complaints</a></li>
+            <li class="list-group-item nav-menu "><a class="link requests  requests-tabactive " href="#" onclick="getBlockedUsers()">Blocked
+                Users</a></li>
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="routeDetails.html">Route Management</a></li>
+          </ul>
+        </div>
+        <div class="float-end">
+          <!--notification starts-->
+          <div class="float-start">
+            <div class="header-right">
+              <div class="dropdown col-md-12 float-start">
+                <img class="cursor" src="images/notify.svg" alt="notify-icon" title="notifications"
+                  data-toggle="dropdown" aria-expanded="true">
+                <div class="dropdown-menu m-0 p-3 notify-filter">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12 pb-2 border-0 mb-3"><span
+                          class="text-style-title h-size3">Notification</span>
+                        <button type="button" class="btn-close float-end close-filter" data-dismiss="notify-filter"
+                          aria-label="Close">
+                        </button>
+                      </div>
+
+                      <div class="col-md-12">
+                        <div class="row mb-3">
+                          <div class=" col-md-12 float-start topnav-border">
+                            <img src="images/success.svg" class="notification-icon float-start" alt="notifyicon">
+                            <p class="float-start notification-content">TN 12 W 3243 Trip ended<br>
+                              <span class="color">Successfully</span>
+                            </p>
+                          </div>
+                          <div class="float-end">
+                            <h6 class="notification-time float-end ">Just now</h6>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div class=" col-md-12 float-start topnav-border">
+                            <img src="images/comp-red.svg" class="notification-icon float-start" alt="notifyicon">
+                            <p class="float-start notification-content">1234 Nithya Raised a<br>
+                              <span class="color1">Compliant</span>
+                            </p>
+                          </div>
+                          <div class="float-end">
+                            <h6 class="notification-time float-end ">Just now</h6>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div class=" col-md-12 mt-3 ">
+                            <div class="col-md-6 float-start notify-space">
+                              <h6>2 Notifications</h6>
+                            </div>
+                            <div class="col-md-6 float-end notify-space1">
+                              <a href="#" class="float-end">Clear All</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--notification here-->
+
+          <!--user profile starts-->
+          <div class="float-end">
+            <div class="header-right">
+              <div class="dropdown col-md-12 float-start">
+                <img class="cursor navuserprofile-icons" src="images/user-profile.svg" alt="user-icon"
+                  title="User Profile" data-toggle="dropdown" aria-expanded="true" />
+                <div class="dropdown-menu m-0 p-3 user-filter">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12 pb-2 border-0 mb-3">
+                        <button type="button" class="btn-close float-end close-filter" data-dismiss="user-filter"
+                          aria-label="Close">
+                        </button>
+                      </div>
+
+                      <div class="col-md-12">
+
+                        <div class="col-md-4 float-start">
+                          <img src="images/user-icon-image.svg" class="user-profile-icon" alt="profileicon">
+                        </div>
+                        <div class="col-md-4 float-start">
+                          <h5 class="userprofile-content pt-2">Raghavan Govind</h5>
+                          <h5 class="userprofile-content1  pt-2">raghavan.g@avasoft.com</h5>
+                          <button type="button" class="btnlogoutbtn mb-3 " id="logoutbtn">Logout</button>
+
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--user profile ends-->
+
+  <!--nav ends-->
+  <div class="parent-container my-2 mb-3 px-lg-5">
+    <!--this is my parent container-->
+    <h2 class="h-size1 float-start mb-3 mt-4">Blocked Users</h2>
+    <div class="header-right mt-3">
+      <div class="dropdown filt float-start">
+        <img class="cursor" src="images/Vector.svg" alt="filter-icon" title="Advanced Filter" data-toggle="dropdown"
+        aria-expanded="true" />
+
+      <div class="dropdown-menu m-0 p-3 advanced-filter">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 pb-2 border-0 mb-3"><span class="text-style-title filter-title">Advanced
+                Filter</span><button type="button" class="btn-close float-end" id="close-filter"
+                data-dismiss="advanced-filter" aria-label="Close">
+
+              </button>
+            </div>
+            <div class="col-md-12">
+              <div class="row mb-3">
+                <div class="col-md-12 mb-3">
+                  <label class="mb-0 form-label filter-style" for="domain">Domain</label>
+                  <input type="text" class="form-control border-filter-style1" id="domain">
+                </div>
+                <div class="col-md-6 mt-3 mb-3">
+                  <label class="mb-0 form-label filter-style fil-style" for="source1">From</label>
+                  <input type="date" class="form-control border-filter-style bord-style" id="source1">
+                </div>
+                <div class="col-md-6 mt-3 mb-3">
+                  <label class="mb-0 form-label filter-style fil-style" for="to1">To</label>
+                  <input type="date" class="form-control border-filter-style bord-style" id="to1">
+                </div>
+
+              </div>
+              <div class=" float-end">
+                <button type="button" class="btn btn-primary btn-sm cancel-btn text-center">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm button1 text-center" id="apply-filter" onclick="filterBlockedUser()">Apply Filter</button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--filter ends here-->
+    
+      <!--search starts here-->
+      <div class="float-start me-3">
+        <div class="input-group flex-nowrap">
+          <input type="text" class="form-control search-align" onclick="searchBlockedUser()" placeholder="Search" aria-label="Username"
+            aria-describedby="addon-wrapping">
+          <button class="input-group-text btn btn-search-custom" id="addon-wrapping"><img src="images/search.svg"
+              alt="search-icon"></button>
+        </div>
+      </div>
+    </div>
+    <!--search ends here-->
+    
+    <!--table starts here-->
+    <div class="w-100 float-start border">
+      <table class="table mb-0 caps-grid">
+        <thead>
+          <tr class="display-shadow">
+            <th class="header-class">Employee Id</th>
+            <th class="header-class">Employee Name</th>
+            <th class="header-class">Domain</th>
+            <th class="header-class">Blocked Date<span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                  href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+          <!-- tr class="row-bg-style">
+            <td class="spacing">1234</td>
+            <td class="spacing">Nithya</td>
+            <td class="spacing">UXD</td>
+            <td class="spacing">04/04/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" data-toggle="modal" data-target="#block-pop" /></a></td>
+          </tr>        
+           
+          
+          <tr class="row-bg-style">
+            <td class="spacing">1235</td>
+            <td class="spacing">Mani</td>
+            <td class="spacing">UXD</td>
+            <td class="spacing">04/04/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr>
+          <tr class="row-bg-style">
+            <td class="spacing">1236</td>
+            <td class="spacing">Vishwa</td>
+            <td class="spacing">JAVA</td>
+            <td class="spacing">04/04/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr>
+          <tr class="row-bg-style">
+            <td class="spacing">1237</td>
+            <td class="spacing">Rubin</td>
+            <td class="spacing">UXD</td>
+            <td class="spacing">04/04/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr>
+          <tr class="row-bg-style">
+            <td class="spacing">1238</td>
+            <td class="spacing">Rohith</td>
+            <td class="spacing">JAVA</td>
+            <td class="spacing">12/04/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr>
+          <tr class="row-bg-style">
+            <td class="spacing">1239</td>
+            <td class="spacing">Saro</td>
+            <td class="spacing">UXD</td>
+            <td class="spacing">04/03/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr>
+          <tr class="row-bg-style">
+            <td class="spacing">1240</td>
+            <td class="spacing">Ji</td>
+            <td class="spacing">JAVA</td>
+            <td class="spacing">03/02/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr>
+          <tr class="row-bg-style">
+            <td class="spacing">1241</td>
+            <td class="spacing">Nishok</td>
+            <td class="spacing">JAVA</td>
+            <td class="spacing">04/04/2021</td>
+            <td class="spacing"><a href="#" title="unblock" class="actions-image"><img src="images/unblock.svg"
+                  alt="unblock-icon" /></a></td>
+          </tr -->
+        </tbody>
+      </table>
+    </div>
+    <div class="w-100 float-start">
+      <!--total content display starts here-->
+      <div class="header-left py-md-3" id="showPage">
+<!--         <span class="font-records">Showing:</span> -->
+<!--         <span class="regular">7 results out of 120</span> -->
+      </div>
+      <!--total content display ends here-->
+      
+      <!--Pagination starts here-->
+      <div class="pageNavPosition" id="pageNavPosition" style="float:right">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+<!--             <li class="page-item"> -->
+<!--               <a class="page-link pagination-border" href="#" id = "previouspage" aria-label="Previous"> -->
+<!--                 <img src="Images/pagination-prev-arrow.svg" alt="page-arrow" /> -->
+<!--               </a> -->
+<!--             </li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border page-active" href="#">1</a></li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border" href="#">2</a></li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border" href="#">3</a></li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border" href="#">...</a></li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border" href="#">9</a></li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border" href="#">10</a></li> -->
+<!--             <li class="page-item"><a class="page-link pagination-border" href="#">11</a></li> -->
+
+<!-- 		<input type="button" id="first" onclick="firstPage()" value="first" /> -->
+<!-- 		<input type="button" id="next" onclick="nextPage()" value="next" /> -->
+<!-- 		<input type="button" id="previous" onclick="previousPage()" value="previous" /> -->
+<!-- 		<input type="button" id="last" onclick="lastPage()" value="last" /> -->
+
+<!--             <li class="page-item"> -->
+<!--               <a class="page-link pagination-border" href="#" id = "nextpage" aria-label="Next"> -->
+<!--                 <img src="Images/pagination-next-arrow.svg" alt="page-arrow" /> -->
+<!--               </a> -->
+<!--             </li> -->
+          </ul>
+        </nav>
+      </div>
+      <!--pagination ends here-->
+    </div>
+
+
+  </div>
+
+   <!--blocked users popup starts here-->
+   <div class="modal fade" id="block-pop" tabindex="-1" role="dialog" aria-labelledby="block-pop"
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered " role="document">
+     <div class="modal-content bor-pop ">
+       <div class="modal-header border-0 pb-0">
+         <div class="col-md-12 col-12">
+           <button type="button" class="close closeicon float-end" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+       </div>
+       <div class="modal-body pt-2 pb-3 ">
+         <div class="row justify-content-center">
+
+           <p class="style-label text-center">Are you sure you want to unblock this employee?</p>
+
+         </div>
+       </div>
+       <div class="row justify-content-center mb-5 mt-2">
+         <div class="col-md-8 text-center">
+           <button type="button" class="cancel-btn2" data-dismiss="modal">No</button>
+           <button type="button" class="button11" onclick="unblockUser()">Yes</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!--blocked users popup ends here-->
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $('.advanced-filter').click(function (event) {
+      event.stopPropagation();
+
+    });
+    $('#close-filter').click(function () {
+      $('.advanced-filter').removeClass('show');
+    })
+  </script>
+    
+    <script type="text/javascript">
+    
+    window.sessionStorage;
+    
+    window.onload = function(){
+    	getBlockedUsers();
+    	//load();
+    };
+    //window.onload = load;
+    var xhr = new XMLHttpRequest();
+   // var setTimeout = setInterval(getBlockedUsers, 60000);
+   
+   var blockedUsersSheet;
+    function getBlockedUsers() {
+     xhr.open("GET", "http://localhost:8080/api/v1/list/", false);
+     xhr.onreadystatechange = processResponse;
+     xhr.send(null);
+    }
+    function processResponse()
+    {
+    	if(xhr.readyState == 4 && xhr.status == 200) 
+    	{
+          blockedUsersSheet = JSON.parse(this.responseText);
+          displaySheet(blockedUsersSheet);
+        }
+    }
+    var counter = 0;
+    var rowLength;
+    function displaySheet(obj) {
+    	
+    	rowLength = obj.length;
+    	sessionStorage.setItem("records",rowLength);
+
+    	var tbody = document.getElementById("tablebody");
+    	for(var rows = 0; rows < rowLength; rows++)
+    	{
+      		var tr = document.createElement('tr');
+      		counter++;
+      		tr.id = "tr" + counter;
+      		tbody.appendChild(tr);
+      		tr.className = "row-bg-style";
+
+      		var td0 = document.createElement('td');
+      		td0.className = "spacing";
+      		td0.innerHTML = obj[rows].employeeId;
+      		tr.appendChild(td0);
+      
+      		var td1 = document.createElement('td');
+      		td1.className = "spacing";
+      		td1.innerHTML = obj[rows].employeeName;
+      		tr.appendChild(td1);
+
+      		var td2 = document.createElement('td');
+      		td2.className = "spacing";
+      		td2.innerHTML = obj[rows].domain;
+      		tr.appendChild(td2);
+
+      		var td3 = document.createElement('td');
+      		td3.className = "spacing";
+      		var blockedDate = obj[rows].blockedDate;
+      		var formattedDate=blockedDate.split("T");
+      		var dateBlocked = formattedDate[0].split("-");
+      		td3.innerHTML=dateBlocked[2]+"-"+dateBlocked[1]+"-"+dateBlocked[0];
+      		tr.appendChild(td3);
+      		
+      		var td4 = document.createElement('td');
+       		td4.className = "spacing";
+       		td4.innerHTML = "<a href='#' title='unblock' class='actions-image'><img src='images/unblock.svg' data-target='#block-pop' data-toggle='modal' onclick='findid(this)' alt='unblock-icon' /></a>";
+       		tr.appendChild(td4);
+             tbody.appendChild(tr);
+         } 
+    	pager.showPage(1);
+    }
+    
+    var rowid;
+    function findid(obj){
+    	
+    	var trid=obj.closest("tr");
+    	//alert(trid.id);
+    	rowid=trid.id;
+    }
+    
+    function unblockUser(){
+	    	
+    	var unblockEmpid=document.getElementById(rowid).cells[0].innerHTML;
+    	//alert(unblockEmpid);
+    	var xhrUnblock=new XMLHttpRequest();
+    	xhrUnblock.open("PUT","http://localhost:8080/api/v1/action/unblock/yes/"+unblockEmpid,true);
+    	xhrUnblock.send(null);
+    	xhrUnblock.onreadystatechange=function(){
+    		
+    		if(xhrUnblock.readyState==4 && xhrUnblock.status==200){
+    			
+    			alert("Unblocked User Successfully!!");
+    			window.location.reload();
+    		}
+    	}
+    	
+    }
+//     //For pagination
+//     var list;
+//     var pageList = new Array();
+//     var currentPage = 1;
+//     var numberPerPage = 7;
+//     var numberOfPages;   // calculates the total number of pages
+    
+//     function load(){
+
+//     	getBlockedUsers();
+//     	list = blockedUsersSheet;
+//     	numberOfPages = (blockedUsersSheet.length)/7;
+//         numberOfPages = getNumberOfPages();
+//         loadList();
+//     }
+
+//     function getNumberOfPages() {
+//         return Math.ceil((blockedUsersSheet.length)/numberPerPage);
+//     }
+    
+//     function nextPage() {
+//         currentPage += 1;
+//         loadList();
+//     }
+
+//     function previousPage() {
+//         currentPage -= 1;
+//         loadList();
+//     }
+
+//     function firstPage() {
+//         currentPage = 1;
+//         loadList();
+//     }
+
+//     function lastPage() {
+//         currentPage = numberOfPages;
+//         loadList();
+//     }
+    
+//     function loadList() {
+    	
+//         var begin = ((currentPage - 1) * numberPerPage);
+//         var end = begin + numberPerPage;
+
+//         pageList = list.slice(begin, end);
+//         drawList();    // draws out our data
+//         check();       // determines the states of the pagination buttons
+//     }
+    
+//     function drawList() {
+//         document.getElementById("tablebody").innerHTML = "";
+//         for (var r = 0; r < pageList.length; r++) {
+//            // document.getElementById("tablebody").innerHTML += pageList[r] + "<br/>";
+//         	var tr = document.createElement('tr');
+//       		counter++;
+//       		tr.id = "tr" + counter;
+//       		//tbody.appendChild(tr);
+//       		tr.className = "row-bg-style";
+
+//       		var td0 = document.createElement('td');
+//       		td0.className = "spacing";
+//       		td0.innerHTML = pageList[r].employeeId;
+//       		tr.appendChild(td0);
+      
+//       		var td1 = document.createElement('td');
+//       		td1.className = "spacing";
+//       		td1.innerHTML = pageList[r].employeeName;
+//       		tr.appendChild(td1);
+
+//       		var td2 = document.createElement('td');
+//       		td2.className = "spacing";
+//       		td2.innerHTML = pageList[r].domainName;
+//       		tr.appendChild(td2);
+
+//       		var td3 = document.createElement('td');
+//       		td3.className = "spacing";
+//       		var blockedDate = pageList[r].blockedDate;
+//       		var formattedDate=blockedDate.split("-");
+//       		td3.innerHTML=formattedDate[2]+"-"+formattedDate[1]+"-"+formattedDate[0];
+//       		tr.appendChild(td3);
+      		
+//       		var td4 = document.createElement('td');
+//        		td4.className = "spacing";
+//        		td4.innerHTML = "<a href='#' title='unblock' class='actions-image'><img src='images/unblock.svg' data-target='#block-pop' data-toggle='modal' onclick='findid(this)' alt='unblock-icon' /></a>";
+//        		tr.appendChild(td4);
+//        		document.getElementById("tablebody").appendChild(tr);
+//          }
+//      }
+    
+//     function check() {
+//         document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
+//         document.getElementById("previous").disabled = currentPage == 1 ? true : false;
+//         document.getElementById("first").disabled = currentPage == 1 ? true : false;
+//         document.getElementById("last").disabled = currentPage == numberOfPages ? true : false;
+//     }
+    
+
+function filterBlockedUser()
+{
+	
+	//alert("hi");
+	var xhrFilterBlockedUser = new XMLHttpRequest();
+	if(document.getElementById("domain").value==""){
+		var domainSelected= "null";
+	}
+	else{
+		var domainSelected = document.getElementById("domain").value;
+		domainSelected = domainSelected.toUpperCase().trim();
+	}
+	
+	if(document.getElementById("source1").value==""){
+		var fromSelected = "null";
+	}
+	else{
+		var fromSelected = document.getElementById("source1").value;
+	}
+	
+	if(document.getElementById("to1").value==""){
+		var toSelected = "null";
+	}
+	else{
+		var toSelected = document.getElementById("to1").value;
+	}
+	//alert(fromSelected);
+	
+	
+	xhrFilterBlockedUser.open("GET","http://localhost:8080/api/v1/filter/"+domainSelected+"/"+fromSelected+"/"+toSelected,true);
+	xhrFilterBlockedUser.onreadystatechange = function(){
+		if(xhrFilterBlockedUser.readyState==4 && xhrFilterBlockedUser.status==200){
+			var responseFilter = JSON.parse(this.responseText);
+			$("#tablebody").empty();
+			displaySheet(responseFilter);
+		}
+	};
+	xhrFilterBlockedUser.send();
+}
+
+function searchBlockedUser(){
+	
+	alert("hi");
+	var xhrSearchBlockedUser = new XMLHttpRequest();
+	if(document.getElementById("name").value==""){
+		var empNameSelected= "null";
+	}
+	else
+	{
+		var empNameSelected = document.getElementById("name").value;
+		empNameSelected = empNameSelected.toUpperCase().trim();
+	}
+	xhrSearchBlockedUser.open("GET","http://localhost:8080/api/v1/search/"+empNameSelected,true);
+	xhrSearchBlockedUser.onreadystatechange = function(){
+		if(xhrSearchBlockedUser.readyState==4 && xhrSearchBlockedUser.status==200){
+			var responseFilter = JSON.parse(this.responseText);
+			$("#tablebody").empty();
+			displaySheet(responseFilter);
+		}
+	};
+	xhrSearchBlockedUser.send();
+}
+
+
+
+    
+  </script>
+  <script src="js/BlockedUserPagination.js"></script>
+  <script src="js/logout.js"></script>
+
+</body>
+
+</html>

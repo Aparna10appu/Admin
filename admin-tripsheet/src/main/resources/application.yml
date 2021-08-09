@@ -1,0 +1,21 @@
+jwt:
+  secret: "cabAdminsecret"
+
+spring:
+  data:
+    mongodb:
+      host: 192.168.101.102
+      database: cabApplicationV1
+      port: 27017 
+  
+#spring:
+#  config:
+#    import: configserver:http://localhost:8888
+#    
+#  application:
+#    name: AssignedCabsTripsheet
+
+
+logging:  pattern:    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+      file:    path: 

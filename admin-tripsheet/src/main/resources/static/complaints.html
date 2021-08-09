@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <title>Capital Planning System</title>
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="css/commontheme.css">
+</head>
+
+<body>
+  <!--nav starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 topnav-border">
+        <div class="float-start">
+          <a class="cab-logo" href="cabadmin.html"><img src="images/cab-logo.svg" class="cabapp-logo" alt="logo"></a>
+        </div>
+        <div class="float-start">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="cabadmin.html">Manage Requests And Cabs</a>
+            </li>
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="history.html">History of Trips</a></li>
+            <li class="list-group-item nav-menu"><a class="link requests requests-tabactive" href="complaints.html">Complaints</a>
+            </li>
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="Blockedusers.html">Blocked Users</a></li>
+            <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="routemanagement.html">Route Management</a></li>
+          </ul>
+        </div>
+        <div class="float-end">
+          <!--notification starts-->
+          <div class="float-start">
+            <div class="header-right">
+              <div class="dropdown col-md-12 float-start">
+                <img class="cursor" src="images/notify.svg" alt="notify-icon" title="notifications"
+                  data-toggle="dropdown" aria-expanded="true">
+                <div class="dropdown-menu m-0 p-3 notify-filter">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12 pb-2 border-0 mb-3"><span
+                          class="text-style-title h-size3">Notification</span>
+                        <button type="button" class="btn-close float-end close-filter" data-dismiss="notify-filter"
+                          aria-label="Close">
+                        </button>
+                      </div>
+
+                      <div class="col-md-12">
+                        <div class="row mb-3">
+                          <div class=" col-md-12 float-start topnav-border">
+                            <img src="images/success.svg" class="notification-icon float-start" alt="notifyicon">
+                            <p class="float-start notification-content">TN 12 W 3243 Trip ended<br>
+                              <span class="color">Succesfully</span>
+                            </p>
+                          </div>
+                          <div class="float-end">
+                            <h6 class="notification-time float-end ">Just now</h6>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div class=" col-md-12 float-start topnav-border">
+                            <img src="images/comp-red.svg" class="notification-icon float-start" alt="notifyicon">
+                            <p class="float-start notification-content">1234 Nithya Raised a<br>
+                              <span class="color1">Compliant</span>
+                            </p>
+                          </div>
+                          <div class="float-end">
+                            <h6 class="notification-time float-end ">Just now</h6>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div class=" col-md-12 mt-3 ">
+                            <div class="col-md-6 float-start notify-space">
+                              <h6>2 Notifications</h6>
+                            </div>
+                            <div class="col-md-6 float-end notify-space1">
+                              <a href="#" class="float-end">Clear All</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--notification here-->
+
+          <!--user profile starts-->
+          <div class="float-end">
+            <div class="header-right">
+              <div class="dropdown col-md-12 float-start">
+                <img class="cursor navuserprofile-icons" src="images/user-profile.svg" alt="user-icon"
+                  title="User Profile" data-toggle="dropdown" aria-expanded="true" />
+                <div class="dropdown-menu m-0 p-3 user-filter">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12 pb-2 border-0 mb-3">
+                        <button type="button" class="btn-close float-end close-filter" data-dismiss="user-filter"
+                          aria-label="Close">
+                        </button>
+                      </div>
+
+                      <div class="col-md-12">
+
+                        <div class="col-md-4 float-start">
+                          <img src="images/user-icon-image.svg" class="user-profile-icon" alt="profileicon">
+                        </div>
+                        <div class="col-md-4 float-start">
+                          <h5 class="userprofile-content pt-2">Raghavan Govind</h5>
+                          <h5 class="userprofile-content1  pt-2">raghavan.g@avasoft.com</h5>
+                          <button type="button" class="btnlogoutbtn mb-3 ">Logout</button>
+
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--user profile ends-->
+
+  <!--nav ends-->
+  <div class="parent-container mt-2 mb-3 px-lg-3">
+    <!--this is my parent container-->
+    <h2 class="h-size1 float-start mb-3">Complaints</h2>
+    <div class="header-right1 float-end">
+      <div class="dropdown filt float-start">
+        <img class="cursor" src="images/Vector.svg" alt="filter-icon" title="Advanced Filter" data-toggle="dropdown"
+          aria-expanded="true" onclick="getFilterTab()"/>
+        <div class="dropdown-menu m-0 p-3 advanced-filter" id="filterModal">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12 pb-2 border-0 mb-3"><span class="text-style-title filter-title">Advanced
+                  Filter</span><button type="button" class="btn-close float-end" id="close-filter"
+                  data-dismiss="advanced-filter" aria-label="Close">
+
+                </button>
+              </div>
+              <div class="col-md-12">
+                <div class="row mb-3">
+
+                  <div class="col-md-6 mb-3">
+                    <label class="mb-0 form-label filter-style " for="Source">Source</label>
+                    <select class="form-select style-select1 border-filter-style" id="Source"
+                      aria-label="Default-example">
+                      <option selected value=0>Select Source</option>
+                     
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="mb-0 form-label filter-style " for="Destination">Destination</label>
+                    <select class="form-select style-select1 border-filter-style" id="Destination"
+                      aria-label="Default-example">
+                      <option selected value=0>Select Destination</option>
+                      
+                    </select>
+                  </div>
+<!--                   <div class="col-md-6 mb-3"> -->
+<!--                     <label class="mb-0 form-label filter-style " for="Droppoint">Drop Point</label> -->
+<!--                     <select class="form-select style-select1 border-filter-style" id="Droppoint" -->
+<!--                       aria-label="Default-example"> -->
+<!--                       <option selected>Select Drop Point</option> -->
+<!--                       <option value="1">One</option> -->
+<!--                       <option value="2">Two</option> -->
+<!--                       <option value="3">Three</option> -->
+<!--                     </select> -->
+<!--                   </div> -->
+                  <div class="col-md-6 mb-3">
+                    <label class="mb-0 form-label filter-style " for="Timeslot">Time Slot</label>
+                    <select class="form-select style-select1 border-filter-style" id="Timeslot"
+                      aria-label="Default-example">
+                      <option selected value=0>Select Time Slot</option>
+                      
+                    </select>
+                  </div>
+
+                </div>
+                <div class=" float-end">
+                                    <button type="button"
+                                        class="btn btn-primary btn-sm cancel-btn close-filter"
+                                        id="cancelButton" data-dismiss="advanced-filter" aria-label="Close">Cancel</button>
+                                    <button type="button"
+                                        class="btn btn-primary btn-sm button1 close-filter" 
+                                        id="ApplyButton" onclick="filterApplied()" data-dismiss="modal" aria-label="Close">Apply Filter</button>
+                                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--filter ends here-->
+      <!--search starts here-->
+      <div class="float-start me-3">
+        <div class="input-group flex-nowrap search-shadow">
+          <input type="text" class="form-control search-align" placeholder="Search" aria-label="Username" id="searchtab"
+            aria-describedby="addon-wrapping">
+          <button class="input-group-text btn btn-search-custom" id="addon-wrapping" onclick="getBySearch()"><img src="images/search.svg"
+              alt="search-icon" ></button>
+        </div>
+      </div>
+      <!--search ends here-->
+    </div>
+  </div>
+  <!--table starts here-->
+  <div class="col-md-12 flt-lft  my-5 px-lg-3 tab">
+    <div class="tab-content border1 my-3" id="pills-tabContent">
+      <div class="col-md-12 float-start">
+        <table class="table mb-0">
+          <thead>
+            <tr class="display-shadow">
+              <th class="header-class1">Employee Id</th>
+              <th class="header-class1">Employee Name</th>
+              <th class="header-class1">Employee Number</th>
+              <th class="header-class1">Cab Number</th>
+              <th class="header-class1">Driver Name</th>
+              <th class="header-class1">Source <span class="sorting"><a class="sort-up" href="#"><img class="sort-image"
+                      src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down" href="#"><img
+                      class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+              <th class="header-class1">Destination <span class="sorting"><a class="sort-up" href="#"><img
+                      class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                    href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+              <th class="header-class1">Date of Travel <span class="sorting"><a class="sort-up" href="#"><img
+                      class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                    href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+              <th class="header-class1">Time Slot <span class="sorting"><a class="sort-up" href="#"><img
+                      class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                    href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+              <th class="header-class1">Complaints</th>
+              <th class="header-class1">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <!--complaints tab ends here-->
+
+
+    <div class="w-100 float-start" >
+      <!--total content display starts here-->
+      <div class="header-left py-md-3" id="record">
+        <span class="font-records"></span>
+        <span class="regular" id="count">Records:</span>
+      </div>
+      <!--total content display ends here-->
+      
+    </div>
+  </div>
+  
+
+  <script src="js/complaints.js"></script>
+  <script src="js/timeFormatter.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $('.advanced-filter').click(function (event) {
+      event.stopPropagation();
+
+    });
+    $('#close-filter').click(function () {
+      $('.advanced-filter').removeClass('show');
+    })
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

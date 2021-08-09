@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <title>Cab Booking System</title>
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="css/commontheme.css">
+</head>
+
+<body>
+<!--nav starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 topnav-border">
+      <div class="float-start">
+        <a class="cab-logo" href="cabadmin.html"><img src="images/cab-logo.svg" class="cabapp-logo" alt="logo"></a>
+      </div>
+      <div class="float-start">
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item nav-menu requests"><a class="link requests requests-tabactive " href="cabadmin.html">Manage
+            Requests And Cabs</a></li>
+<!--           <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="#">History of Trips</a></li> -->
+          <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="complaints.html">Complaints</a></li>
+          <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="Blockedusers.html">Blocked Users</a></li>
+          <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="routeDetails.html">Route Management</a></li>
+        </ul>
+      </div>
+      <div class="float-end">
+        <!--notification starts-->
+        <div class="float-start">
+          <div class="header-right">
+            <div class="dropdown col-md-12 float-start">
+              <img class="cursor" src="images/notify.svg" alt="notify-icon" title="notifications"
+                   data-toggle="dropdown" aria-expanded="true">
+              <div class="dropdown-menu m-0 p-3 notify-filter">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12 pb-2 border-0 mb-3"><span
+                            class="text-style-title h-size3">Notification</span>
+                      <button type="button" class="btn-close float-end close-filter" data-dismiss="notify-filter"
+                              aria-label="Close">
+                      </button>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="row mb-3">
+                        <div class=" col-md-12 float-start topnav-border">
+                          <img src="images/success.svg" class="notification-icon float-start" alt="notifyicon">
+                          <p class="float-start notification-content">TN 12 W 3243 Trip ended<br>
+                            <span class="color">Succesfully</span>
+                          </p>
+                        </div>
+                        <div class="float-end">
+                          <h6 class="notification-time float-end ">Just now</h6>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div class=" col-md-12 float-start topnav-border">
+                          <img src="images/comp-red.svg" class="notification-icon float-start" alt="notifyicon">
+                          <p class="float-start notification-content">1234 Nithya Raised a<br>
+                            <span class="color1">Compliant</span>
+                          </p>
+                        </div>
+                        <div class="float-end">
+                          <h6 class="notification-time float-end ">Just now</h6>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div class=" col-md-12 mt-3 ">
+                          <div class="col-md-6 float-start notify-space">
+                            <h6>2 Notification</h6>
+                          </div>
+                          <div class="col-md-6 float-end notify-space1">
+                            <a href="#" class="float-end">Clear All</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--notification here-->
+
+        <!--user profile starts-->
+        <div class="float-end">
+          <div class="header-right">
+            <div class="dropdown col-md-12 float-start">
+              <img class="cursor navuserprofile-icons" src="images/user-profile.svg" alt="user-icon"
+                   title="User Profile" data-toggle="dropdown" aria-expanded="true" />
+              <div class="dropdown-menu m-0 p-3 user-filter">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12 pb-2 border-0">
+                      <button type="button" class="btn-close float-end close-filter" data-dismiss="user-filter"
+                              aria-label="Close">
+                      </button>
+                    </div>
+
+                    <div class="col-md-12">
+
+                      <div class="col-md-4 float-start">
+                        <img src="images/user-icon-image.svg" class="user-profile-icon" alt="profileicon">
+                      </div>
+                      <div class="col-md-4 float-start">
+                        <h5 class="userprofile-content pt-2">Raghavan Govind</h5>
+                        <h5 class="userprofile-content1  pt-2">raghavan.g@avasoft.com</h5>
+                        <button type="button" class="btnlogoutbtn mb-3 " id="logoutbtn">Logout</button>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--user profile ends-->
+
+<!--nav ends-->
+<!--tab starts-->
+  <span id="topScrollButton" class="absolute-btn"><img src="images/Scrollup.svg" id="ScrollUp"></span>
+<span class="float-end date-top" id="todayDate"></span>
+<div class="col-md-12 float-start  px-lg-5 tab">
+  <ul class="nav nav-pills mb-4" style="float:left" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link bord tab-color active" id="pills-todaysrequest-tab" data-toggle="pill"
+         href="#pills-todaysrequest" role="tab" aria-controls="pills-todaysrequest" aria-selected="true">Today's
+        Request</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link bord tab-color" id="pills-assignedcabs-tab" data-toggle="pill" href="#pills-assignedcabs"
+         role="tab" aria-controls="pills-assignedcabs" aria-selected="false">Assigned cabs</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link bord tab-color" id="pills-managecabs-tab" data-toggle="pill" href="#pills-managecabs"
+         role="tab" aria-controls="pills-managecabs" aria-selected="false">Manage Cabs</a>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link bord tab-color" id="pills-managedrivers-tab" data-toggle="pill" href="#pills-managedrivers"
+         role="tab" aria-controls="pills-managedrivers" aria-selected="false">Manage Drivers</a>
+    </li>
+  </ul>
+  <!--tab ends here-->
+
+  <!--filter starts here-->
+  <div class="header-right" id="filter-search-assignToCab">
+    <div class="dropdown float-start">
+      <img class="cursor" src="images/Vector.svg" alt="filter-icon" title="Advanced Filter" data-toggle="dropdown"
+           aria-expanded="true" id="filterbtn" />
+
+      <div class="dropdown-menu m-0 p-3 advanced-filter">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 pb-2 border-0 mb-3" ><span class="text-style-title filter-title">Advanced
+                  Filter</span><button type="button" class="btn-close float-end close-filter"
+                                       data-dismiss="advanced-filter" aria-label="Close" >
+
+            </button>
+            </div>
+            <div class="col-md-12">
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <label class="mb-0 form-label filter-style " for="Source">Source</label>
+                  <select class="form-select style-select1 border-filter-style" id="Source"
+                          aria-label="Default-example">
+                    <option selected value=0>Select Source</option>
+
+
+
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="mb-0 form-label filter-style " for="Destination">Destination</label>
+                  <select class="form-select style-select1 border-filter-style" id="Destination"
+                          aria-label="Default-example">
+                    <option selected value=0>Select Destination</option>
+
+
+
+                  </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label class="mb-0 form-label filter-style " for="Timeslot">Time Slot</label>
+                  <select class="form-select style-select1 border-filter-style" id="timeslot"
+                          aria-label="Default-example">
+                    <option selected value=0>Select Time Slot</option>
+
+
+
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3" id="drop">
+                  <label class="mb-0 form-label filter-style " for="droppoint">Drop Point</label>
+                  <select class="form-select style-select1 border-filter-style" id="droppoint"
+                          aria-label="Default-example">
+                    <option selected value=0>Select DropPoint</option>
+
+                  </select>
+                </div>
+
+              </div>
+              <div class=" float-end">
+                <button type="button" class="btn btn-primary btn-sm cancel-btn close-filter" data-dismiss="advanced-filter" id="cancelButton">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm button1 close-filter" id="ApplyButton" data-dismiss="advanced-filter">Apply Filter</button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--filter ends here-->
+    <!--search starts here-->
+    <div class="float-start me-3">
+      <div class="input-group flex-nowrap align">
+        <input type="text" class="form-control search-align" placeholder="search" aria-label="Username"
+               aria-describedby="addon-wrapping" id="searchTab" >
+        <button class="input-group-text btn btn-search-custom" id="addon-wrapping"><img src="images/search.svg"
+                                                                                                  alt="search-icon" onclick="getBySearch()"></button>
+      </div>
+    </div>
+    <!--search ends here-->
+    <!--button starts here-->
+
+    <button type="button" class="btn btn-primary btn-sm button new-proj" data-toggle="modal"
+            data-target="#assign-to-cab" id="assign-to-cab-button">Assign To Cab</button>
+
+  
+  
+  </div>
+  
+
+  <!--button ends here-->
+
+  <!--today's request starts here-->
+  <!--today's request starts here-->
+  <div class="tab-content" id="pills-tabContent">
+  
+    <div class="tab-pane fade show active" id="pills-todaysrequest" role="tabpanel"
+         aria-labelledby="pills-todaysrequest-tab">
+         
+      <!--  <div class="w-100 float-start border fixTableHead table-scroll" id="scrollTable">  -->
+      <div class="w-100 float-start border " id="scrollTable">
+      
+        <table class="table mb-0 caps-grid">
+          <thead>
+          <tr class="display-shadow">
+            <th class="header-class">
+              <input class="form-check-input check" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked"></label>
+            </th>
+            <th class="header-class">Employee Id</th>
+            <th class="header-class">Employee Name</th>
+            <th class="header-class">Source <span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Destination<span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Drop Point <span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Booking Time</th>
+            <th class="header-class">Time Slot <span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+          </tr>
+          </thead>
+          <tbody id="tableBody">
+
+
+          </tbody>
+        </table>
+      </div>
+      <!--inprogress tab ends here-->
+
+
+
+
+      <div class="w-100 float-start">
+        <!--total content display starts here-->
+        <div class="header-left py-md-3">
+          <span class="font-records"># Records:</span>
+          <span class="regular" id="counter"></span>
+
+
+        </div>
+
+        <!--total content display ends here-->
+
+
+
+      </div>
+    </div>
+    <!--today;s request ends here-->
+    <!--today;s request ends here-->
+
+    <!--Assigned cabs starts here-->
+    <div class="tab-pane fade" id="pills-assignedcabs" role="tabpanel" aria-labelledby="pills-assignedcabs-tab">
+      <div class="w-100 float-start border fixTableHead table-scroll" id="scroll">
+        <table class="table mb-0 caps-grid" id="mytable">
+          <thead>
+          <tr class="display-shadow" >
+            <th class="header-class">Cab Number</th>
+            <th class="header-class">Driver Name</th>
+            <th class="header-class">Driver Number</th>
+            <th class="header-class">Source <span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Destination<span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+
+            <th class="header-class">Date of Travel <span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Time Slot <span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Actions</th>
+          </tr>
+          </thead>
+          <tbody id="cab-body">
+
+
+
+
+          </tbody>
+        </table>
+      </div>
+      <div class="w-100 float-start">
+        <!--total content display starts here-->
+        <div class="header-left py-md-3" id="record">
+          <span class="font-records"># Records:</span>
+          <span class="regular" id="count"></span>
+        </div>
+        <!--total content display ends here-->
+
+
+      </div>
+
+    </div>
+    <!--Assigned tab ends here-->
+
+
+
+    <!--manage cabs starts here-->
+    <div class="tab-pane fade" id="pills-managecabs" role="tabpanel" aria-labelledby="pills-managecabs-tab">
+      <div class="w-100 float-start border">
+        <table class="table mb-0 caps-grid tab-bord" >
+          <thead>
+          <tr class="display-shadow">
+            <th class="header-class">Cab Model<span class="sorting"><a class="sort-up" href="#"><img
+                    class="sort-image" src="Images/sortup-icon.svg" alt="sort-up" /></a><a class="sort-down"
+                                                                                           href="#"><img class="sort-image" src="Images/sortdown-icon.svg" alt="sort-down" /></a></span></th>
+            <th class="header-class">Cab Number</th>
+            <th class="header-class">Total No.Of Seats</th>
+            <th class="header-class">Insurance Number</th>
+            <th class="header-class">Expiry Date</th>
+            <th class="header-class">Driver Name</th>
+
+
+            <th class="header-class text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="row-bg-style" >
+            <td class="spacing"><select class="form-select style-select" aria-label="Default select example" id="cab-Model-Dropdown" >
+              <option selected>Select</option>
+
+
+
+            </select><a href="#" title="Add" class="actions3-image"><img class="add-style" src="images/add.svg"
+                                                                         alt="add-icon" data-toggle="modal" data-target="#model-pop1"></a></td>
+
+
+            <td class="spacing"><input type="text" class="form-control border-filter-style" id="cab-num" onkeypress="enterEventCabNum(event)"></td>
+
+            <td class="spacing"> <input type="number" class="form-control border-filter-style" id="no-seats" min="0" max="99" onkeypress="enterEventAvailableSeats(event)"></td>
+            <td class="spacing"> <input type="number" class="form-control border-filter-style" id="insurance-num" onkeypress="enterEventInsNum(event)"></td>
+            <td class="spacing"> <input type="date" class="form-control border-filter-style" id="ins-exp-date" onkeypress="enterEventExpDate(event)"></td>
+            <td class="spacing posRelative"> <input type="text" class="form-control border-filter-style" id="driv-name" onkeypress="enterEventDriverName(event)">
+              <div class="suggestStyle" id="suggestDiv"></div>
+
+
+
+
+
+            </td>
+
+            <td class="spacing text-center">
+              <a href="#" title="Save" class="actions4-image"><img
+                      src="images/save.svg" alt="save-icon"  id="saveCab" onclick="validateCabDetails()"/></a>
+              <a href="#" title="Cancel" class="actions2-image"><img
+                      src="images/cancel.svg" alt="cancel-icon"  id="cancelCab" onclick="funclear()"/></a></td>
+          </tr>
+          </tbody>
+          <tbody id="cab-info"></tbody>
+        </table>
+
+      </div>
+      <div class="w-100 float-start">
+        <!--total content display starts here-->
+        <div class="header-left py-md-3" id="displayCount">
+          <span class="font-records"></span>
+          <span class="regular"></span>
+
+
+        </div>
+        <!--total content display ends here-->
+
+        <!--Pagination starts here-->
+<!--         <div class="page py-md-3"> -->
+<!--           <nav aria-label="Page navigation"> -->
+<!--             <ul class="pagination"> -->
+<!--               <li class="page-item"> -->
+<!--                 <a class="page-link pagination-border" href="#" aria-label="Previous"> -->
+<!--                   <img src="Images/pagination-prev-arrow.svg" alt="page-arrow" /> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border page-active" href="#">1</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">2</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">3</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">...</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">9</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">10</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">11</a></li> -->
+<!--               <li class="page-item"> -->
+<!--                 <a class="page-link pagination-border" href="#" aria-label="Next"> -->
+<!--                   <img src="Images/pagination-next-arrow.svg" alt="page-arrow" /> -->
+
+
+<!--                 </a> -->
+<!--               </li> -->
+
+<!--             </ul> -->
+<!--           </nav> -->
+<!--         </div> -->
+        <!--pagination ends here-->
+      </div>
+    </div>
+
+    <!--manage drivers starts here-->
+    <div class="tab-pane fade" id="pills-managedrivers" role="tabpanel" aria-labelledby="pills-managedrivers-tab">
+      <div class="w-100 float-start border">
+        <table class="table mb-0 caps-grid tab-bord">
+          <thead>
+
+
+
+
+
+
+
+          <tr class="display-shadow">
+            <th class="header-class">Driver Name</th>
+            <th class="header-class">Driver Number</th>
+            <th class="header-class">License Number</th>
+            <th class="header-class">Expiry Date</th>
+
+            <th class="header-class text-center">Actions</th>
+
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="row-bg-style">
+            <td class="spacing"><input type="text" class="form-control border-filter-style" id="dri-name" onkeypress = "validateAndMoveName(event)"></td>
+            <td class="spacing"> <input type="text" class="form-control border-filter-style" id="dri-num" onkeypress = "validateAndMoveNum(event)"></td>
+            <td class="spacing"> <input type="text" class="form-control border-filter-style" id="lic-num" onkeypress = "validateAndMoveLic(event)"></td>
+
+            <td class="spacing"> <input type="date" class="form-control border-filter-style" id="lic-exp-date"></td>
+            <td class="spacing text-center"><a href="#" title="Save" class="actions4-image"><img
+                    src="images/save.svg" alt="save-icon" id = "save" onclick = "validateDriverDetails()"/></a>
+              <a href="#" title="Cancel" class="actions2-image" id = "cancel" onclick = "funClear()"><img
+                      src="images/cancel.svg" alt="cancel-icon" /></a></td>
+          </tr>
+          <tbody id = "driver-info">
+          </tbody>
+
+
+          </tbody>
+        </table>
+      </div>
+      <div class="w-100 float-start">
+
+        <!--total content display starts here-->
+        <div class="header-left py-md-3" id = "driverDisplayCount">
+          <span class="font-records"></span>
+          <!--<span class="regular">10 drivers out of 120</span>-->
+          <span class="regular"></span>
+
+        </div>
+        <!--total content display ends here-->
+
+
+        <!--Pagination starts here-->
+<!--         <div class="page py-md-3"> -->
+<!--           <nav aria-label="Page navigation"> -->
+<!--             <ul class="pagination"> -->
+<!--               <li class="page-item"> -->
+<!--                 <a class="page-link pagination-border" href="#" aria-label="Previous"> -->
+<!--                   <img src="Images/pagination-prev-arrow.svg" alt="page-arrow" /> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border page-active" href="#">1</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">2</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">3</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">...</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">9</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">10</a></li> -->
+<!--               <li class="page-item"><a class="page-link pagination-border" href="#">11</a></li> -->
+<!--               <li class="page-item"> -->
+<!--                 <a class="page-link pagination-border" href="#" aria-label="Next"> -->
+<!--                   <img src="Images/pagination-next-arrow.svg" alt="page-arrow" /> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--             </ul> -->
+<!--           </nav> -->
+<!--         </div> -->
+        <!--pagination ends here-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--add model pop up starts here-->
+<div class="modal fade" id="model-pop1" tabindex="-1" role="dialog" aria-labelledby="model-pop1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bor-pop ">
+      <div class="col-md-12 col-12">
+        <div class="modal-body">
+          <label class="label style-label">Enter Model</label>
+          <button type="button" class="close closeicon float-end" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <input type="text" class="form-control border-filter-style" id="model-pop2" placeholder="Please enter the cab model" />
+        </div>
+      </div>
+      <div class="modal-footer border-0 pb-4">
+        <button type="button" class="btn btn-primary btn-sm cancel-btn1" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm button2 "  id="addCabModel" >Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--add model pop up ends here-->
+
+
+<!--assign to cab popup starts-->
+<div class="modal fade" id="assign-to-cab" tabindex="-1" role="dialog" aria-labelledby="assign-to-cablabel" data-backdrop="static"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-customise-width" role="document">
+    <div class="modal-content bor-pop shadow ">
+      <div class="modal-header border-0 pb-0">
+        <label class="modal-title title filter-title ms-3" id="assign-to-cablabel">Assign To Cab</label>
+        <button type="button" class="close closeicon" data-dismiss="modal"  aria-label="Close" onclick="cancel()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+              <label class="mb-0 form-label filter-style " for="cab-model">Cab Model</label>
+              <select class="form-select style-select1 border-filter-style" id="cab-model"
+                      aria-label="Default-example">
+                <option value=0 selected>Select</option>
+              </select>
+              <label class="mb-0 form-label filter-style mt-4" for="cab-driver-name">Driver Name</label>
+              <input type="text" class="form-control border-filter-style" id="cab-driver-name">
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0 form-label filter-style" for="cab-number">Cab Number</label>
+              <select class="form-select style-select1 border-filter-style" id="cab-number"
+                      aria-label="Default-example">
+                <option value=0 selected>Select</option>
+              </select>
+              <label class="mb-0 form-label filter-style mt-4" for="cab-driver-number">Driver Number</label>
+              <input type="text" class="form-control border-filter-style" id="cab-driver-number">
+            </div>
+            <div class="col-md-4 pad">
+              <div class="pop" id="total-seats" >Total No. Of Seats:</div>
+              <div class="pop"id="allocated-seats">Allocated No. Of Seats:</div>
+              <div class="pop"id="remaining-seats">Remaining No. Of Seats:</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer border-0 pb-4 foot-space">
+        <button type="button" class="btn btn-primary btn-sm cancel-btn1" data-dismiss="modal" onclick="cancel()">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm button2" data-dismiss="modal" id="assign-btn">Assign</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--assign to cab popup ends-->
+
+<!--delete popup starts here-->
+<div class="modal fade" id="manage-pop" tabindex="-1" role="dialog" aria-labelledby="manage-pop"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content bor-pop ">
+      <div class="modal-header border-0 pb-0">
+        <div class="col-md-12 col-12">
+          <button type="button" class="close closeicon float-end" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-body pt-2 pb-3 ">
+        <div class="row justify-content-center">
+
+          <p class="style-label text-center">Are you sure you want to delete this cab details?</p>
+
+        </div>
+      </div>
+      <div class="row justify-content-center mb-5 mt-2">
+        <div class="col-md-8 text-center">
+          <button type="button" class="cancel-btn2" data-dismiss="modal">No</button>
+          <button type="button" class="button11" data-dismiss="modal" id="delete" onclick="deleteCabDetails()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--delete users popup ends here-->
+
+
+
+
+
+<script src="js/logout.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+  $('.advanced-filter').click(function (event) {
+    event.stopPropagation();
+
+  });
+
+  $('.close-filter').click(function () {
+    $('.advanced-filter').removeClass('show');
+  })
+
+</script>
+<script>
+    var assignedcab = document.getElementById("pills-assignedcabs-tab");
+
+    assignedcab.addEventListener('click',function(){
+
+        document.getElementById("assign-to-cab-button").style.display = "none";
+        document.getElementById("filter-search-assignToCab").style.display = "block";
+        document.getElementById("ApplyButton").id="ApplyButtonAssignedCabs";
+    });
+
+    var todaysRequest= document.getElementById("pills-todaysrequest-tab");
+
+    todaysRequest.addEventListener('click',function(){
+
+        document.getElementById("assign-to-cab-button").style.display = "block";
+        document.getElementById("filter-search-assignToCab").style.display = "block";
+        document.getElementById("ApplyButtonAssignedCabs").id="ApplyButton";
+    });
+
+    var manageCabs = document.getElementById("pills-managecabs-tab");
+
+    manageCabs .addEventListener('click',function(){
+
+        document.getElementById("filter-search-assignToCab").style.display = "none";
+    });
+
+
+
+    var manageDrivers = document.getElementById("pills-managedrivers-tab");
+
+    manageDrivers .addEventListener('click',function(){
+
+        document.getElementById("filter-search-assignToCab").style.display = "none";
+    });
+
+
+</script>
+
+
+
+
+
+
+<script src="js/managecabsfinal.js"></script>
+<script src="js/managedrivers.js"></script>
+<script src="js/AssignedCab.js"></script>
+<script src="js/TodayRequest.js"></script>
+<script src="js/timeFormatter.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

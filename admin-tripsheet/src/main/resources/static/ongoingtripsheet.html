@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset ='utf-8'>
+        <title>Capital Planning System</title>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="css/commontheme.css">
+    </head>
+    <body>
+       <!--nav starts-->
+       <div class="container-fluid">
+        <div class="row">
+      <div class="col-md-12 topnav-border">
+        <div class="float-start">
+             <a class="cab-logo" href="cabadmin.html"><img src="images/cab-logo.svg" class="cabapp-logo" alt="logo"></a>
+          </div>
+          <div class="float-start">
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item nav-menu requests"><a class="link requests requests-tabactive " href="cabadmin.html">Manage Requests And Cabs</a></li>
+<!--                 <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="history.html">History of Trips</a></li> -->
+                <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="complaints.html">Complaints</a></li>
+                <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="Blockedusers.html">Blocked Users</a></li>
+                <li class="list-group-item nav-menu"><a class="link nav-align-tabs" href="routemanagement.html">Route Management</a></li>
+             </ul>
+            </div>
+            <div class="float-end">
+              <!--notification starts-->
+              <div class="float-start">
+                <div class="header-right">
+                  <div class="dropdown col-md-12 float-start">
+                      <img class="cursor" src="images/notify.svg" alt="notify-icon" title="notifications"  data-toggle="dropdown" aria-expanded="true">
+                  <div class="dropdown-menu m-0 p-3 notify-filter" >
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 pb-2 border-0 mb-3"><span class="text-style-title h-size3">Notification</span>
+                              <button type="button" class="btn-close float-end close-filter" data-dismiss="notify-filter" aria-label="Close">
+                            </button>
+                            </div>
+                            
+                             <div class="col-md-12">
+                              <div class="row mb-3">
+                                      <div class=" col-md-12 float-start topnav-border">
+                                          <img src="images/success.svg" class="notification-icon float-start" alt="notifyicon">
+                                          <p class="float-start notification-content">TN 12 W 3243 Trip ended<br>
+                                          <span class="color">Succesfully</span></p>
+                                        </div>
+                                      <div class="float-end">
+                                          <h6 class="notification-time float-end ">Just now</h6>
+                                        </div>
+                                  </div>
+                                  
+                                  <div>
+                                      <div class=" col-md-12 float-start topnav-border">
+                                          <img src="images/comp-red.svg" class="notification-icon float-start" alt="notifyicon">
+                                          <p class="float-start notification-content">1234 Nithya Raised a<br>
+                                            <span class="color1">Compliant</span></p>
+                                        </div>
+                                          <div class="float-end" >
+                                            <h6 class="notification-time float-end ">Just now</h6>
+                                          </div>
+                                  </div>
+                                 
+                                 <div>
+                                    <div class=" col-md-12 mt-3 ">
+                                        <div class="col-md-6 float-start notify-space">
+                                          <h6>2 Notifications</h6>
+                                        </div>
+                                        <div class="col-md-6 float-end notify-space1">
+                                           <a href="#" class="float-end">Clear All</a>
+                                        </div>
+                                       </div>
+                                 </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!--notification here-->
+
+            <!--user profile starts-->
+            <div class="float-end">
+              <div class="header-right">
+                <div class="dropdown col-md-12 float-start">
+                    <img class="cursor navuserprofile-icons" src="images/user-profile.svg"  alt="user-icon" title="User Profile"  data-toggle="dropdown" aria-expanded="true"/>
+                <div class="dropdown-menu m-0 p-3 user-filter" >
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-md-12 pb-2 border-0 mb-3">
+                            <button type="button" class="btn-close float-end close-filter" data-dismiss="user-filter" aria-label="Close">
+                          </button>
+                          </div>
+                        
+                           <div class="col-md-12">
+                           
+                            <div class="col-md-4 float-start">
+                              <img src="images/user-icon-image.svg" class="user-profile-icon" alt="profileicon">
+                          </div>
+                              <div class="col-md-4 float-start">
+                                <h5 class="userprofile-content pt-2">Raghavan Govind</h5>
+                                <h5 class="userprofile-content1  pt-2">raghavan.g@avasoft.com</h5>
+                                <button type="button" class="btnlogoutbtn mb-3 " id="logoutbtn">Logout</button>
+                            
+                            
+                          
+                          </div>
+                            </div>
+                            </div>
+                          </div>
+                        
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                 <!--user profile ends-->
+
+                  <!--nav ends-->
+        <div class="col-md-12 flt-lft my-5 px-lg-5 tab">
+          <!--tab starts here-->
+            <!-- <ul class="nav nav-pills mb-4" style="float:left" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link bord tab-color" id="pills-todaysrequest-tab" data-toggle="pill" href="#pills-todaysrequest" role="tab" aria-controls="pills-todaysrequest" aria-selected="">Today's Request</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link bord tab-color active" id="pills-assignedcabs-tab" data-toggle="pill" href="#pills-assignedcabs" role="tab" aria-controls="pills-assignedcabs" aria-selected="true">Assigned cabs</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link bord tab-color" id="pills-managecabs-tab" data-toggle="pill" href="#pills-managecabs" role="tab" aria-controls="pills-managecabs" aria-selected="false">Manage Cabs</a>
+                  </li>
+                </ul> -->
+                <!--tab ends here-->
+                <a  href="cabadmin.html#pills-assignedcabs"  id="pills-assignedcabs"   role="tab" aria-controls="pills-assignedcabs"   ><img class="float-start img-back" src="images/back.svg" title="back" alt="back"></a>
+                <h2 class="h-size1 float-start mb-3">Trip Sheet</h2>
+                <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-assignedcabs" role="tabpanel" aria-labelledby="pills-assignedcabs-tab">
+                    <div class="w-100 float-start mt-4 trip-class">
+                            <div class="float-start width-cab">
+                                <div class="trip-space">Cab Number</div> 
+                                <div class="trip-space1" id = "cabnumber"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                                 <div class="trip-space">Driver Name</div>
+                                  <div class="trip-space1" id= "drivername"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                                <div class="trip-space">Driver Number</div>
+                                <div class="trip-space1" id="drivernumber"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                                <div class="trip-space">Source</div>
+                                <div class="trip-space1" id="source"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                                <div class="trip-space">Destination</div>
+                                <div class="trip-space1" id="destination"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                                <div class="trip-space">Date Of Travel</div>
+                                <div class="trip-space1" id="date"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                              <div class="trip-space">Time Slot</div>
+                              <div class="trip-space1" id="timeslot"></div>
+                          </div>
+                            <div class="float-start width-cab">
+                                <div class="trip-space">Total Seats</div>
+                                <div class="trip-space1" id="totalseats"></div>
+                            </div>
+                            <div class="float-start width-cab">
+                              <div class="trip-space">Allocated Seats</div>
+                              <div class="trip-space1" id="allocatedseats"></div>
+                          </div>
+                          <div class="float-start width-cab">
+                            <div class="trip-space">Remaining Seats</div>
+                            <div class="trip-space1" id="remainingseats"></div>
+                        </div>
+                        <div class="float-start width-cab">
+                          <div class="trip-space">Status</div>
+                          <div class="trip-space1" id="status"></div>
+                      </div>
+                      <div class="float-start width-cab">
+                        <div class="trip-space">Start Time</div>
+                        <div class="trip-space1" id="starttime"></div>
+                    </div>
+                    <div class="float-start width-cab">
+                      <div class="trip-space">End Time</div>
+                      <div class="trip-space1" id="endtime"></div>
+                  </div>
+                    </div>
+                        <div class="parent-container mt-4 mb-3"><!--this is my trip container-->
+                           
+                            <!--end trip button starts here-->
+
+                          <!--   <div class="float-end mt-3">
+                            <button type="button" class="btn btn-primary btn-sm tri2 new-proj" id="endbutton" onclick = "checkEndTrip()">End Trip</button> -->
+                            <!--end trip button ends here-->
+
+                            <!--start trip button starts here-->
+                            <!-- >button type="button" class="btn btn-primary btn-sm tri new-proj">Start Trip</button-->
+                            <!--start trip button ends here-->
+
+                            </div>
+                            </div>
+                        <table class="table border mb-0">
+                            <thead>
+                              <tr class="display-shadow">
+                                <th class="header-class">SL.No</th>
+                                <th class="header-class">Employee Id</th>
+                                <th class="header-class">Employee Name</th>
+                                <th class="header-class">Drop Point</th>
+                                <th class="header-class">Reached Time</th>
+                                <th class="header-class">Status</th>
+                              </tr>
+                              </thead>
+                            <tbody id="tablebody">
+                                <!-- >tr class="row-bg-style">
+                                    <td class="spacing1">01</td>
+                                    <td class="spacing1">1234</td>
+                                    <td class="spacing1">Nithya</td>
+                                    <td class="spacing1">AGS</td>
+                                    <td class="spacing1">10:15 PM</td>
+                                    <td class="spacing1">
+                                        <select class="form-select style-select1 border-filter-style" id="Droppoint" aria-label="Default-example">
+                                            <option selected>Select</option>
+                                            <option value="1">Reached</option>
+                                            <option value="2">No Show</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                  <tr class="row-bg-style">
+                                    <td class="spacing1">02</td>
+                                    <td class="spacing1">1235</td>
+                                    <td class="spacing1">Mani</td>
+                                     <td class="spacing1">Sirucheri</td>
+                                    <td class="spacing1">10:15 PM</td>
+                                    <td class="spacing1">
+                                        <select class="form-select style-select1 border-filter-style" id="Droppoint1" aria-label="Default-example">
+                                            <option selected>Select</option>
+                                            <option value="1">Reached</option>
+                                            <option value="2">No Show</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                  <tr class="row-bg-style">
+                                    <td class="spacing1">03</td>
+                                    <td class="spacing1">1236</td>
+                                    <td class="spacing1">Vishwa</td>
+                                    <td class="spacing1">Dollar</td>
+                                    <td class="spacing1">10:16 PM</td>
+                                    <td class="spacing1">
+                                        <select class="form-select style-select1 border-filter-style" id="Droppoint2" aria-label="Default-example">
+                                            <option selected>Select</option>
+                                            <option value="1">Reached</option>
+                                            <option value="2">No Show</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                  <tr class="row-bg-style">
+                                    <td class="spacing1">04</td>
+                                    <td class="spacing1">1237</td>
+                                    <td class="spacing1">Rubin</td>
+                                    <td class="spacing1">KK Nagar</td>
+                                  <td class="spacing1"></td>
+                                  <td class="spacing1">
+                                    <select class="form-select style-select1 border-filter-style" id="Droppoint3" aria-label="Default-example">
+                                        <option selected>Select</option>
+                                        <option value="1">Reached</option>
+                                        <option value="2">No Show</option>
+                                      </select>
+                                  </td>
+                                </tr>
+                                  <tr class="row-bg-style">
+                                    <td class="spacing1">05</td>
+                                    <td class="spacing1">1238</td>
+                                    <td class="spacing1">Rohith</td>
+                                    <td class="spacing1">Rajiv Nagar</td>
+                                    <td class="spacing1"></td>
+                                    <td class="spacing1">
+                                        <select class="form-select style-select1 border-filter-style" id="Droppoint4" aria-label="Default-example">
+                                            <option selected>Select</option>
+                                            <option value="1">Reached</option>
+                                            <option value="2">No Show</option>
+                                            
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr class="row-bg-style">
+                                    <td class="spacing1">06</td>
+                                    <td class="spacing1">1239</td>
+                                    <td class="spacing1">Saro</td>
+                                    <td class="spacing1">Medavakkam</td>
+                                    <td class="spacing1"></td>
+                                    <td class="spacing1">
+                                        <select class="form-select style-select1 border-filter-style" id="Droppoint5" aria-label="Default-example">
+                                            <option selected>Select</option>
+                                            <option value="1">Reached</option>
+                                            <option value="2">No Show</option>
+                                            
+                                          </select>
+                                    </td>
+                                </tr-->
+                                  </tbody>
+                                  </table>
+                        </div>
+                        </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <script src="js/logout.js"></script>
+
+       <script src="js/jquery.min.js"></script>
+                        <script src="js/popper.js"></script>
+                        <script src="js/bootstrap.min.js"></script>
+                        <script type="text/javascript" src = "js/ongoingtripsheet.js"></script>
+                        <script>
+                          $('.advanced-filter').click(function (event) {
+                          event.stopPropagation();
+                          
+                        });
+                            $('#close-filter').click(function(){
+                        $('.advanced-filter').removeClass('show');
+                        })
+                        
+                        </script>
+        
+                            </body>
+                          </html>  
